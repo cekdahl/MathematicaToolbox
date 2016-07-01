@@ -1,2 +1,0 @@
-# Mathematica Toolbox
-This plugin provides a lot of different functionality for WordPress users who also use Mathematica. This is a copy of the code in the repository in the official WordPress plugin directory. Read about all the functionality in the plugin directory: [https://wordpress.org/plugins/mathematica-toolbox/](https://wordpress.org/plugins/mathematica-toolbox/) 
