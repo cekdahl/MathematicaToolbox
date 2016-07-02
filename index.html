@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Mathematica Toolbox</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-fixed-top.css" rel="stylesheet">
+
+	<style>
+	h2, h3, h4 {
+		padding-bottom: 5px;
+		margin-bottom: 20px;
+		border-bottom: 1px dashed;
+		border-color: #adadad;
+	}
+	</style>
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Mathematica Toolbox Documentation</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Overview</h2>
+				<p><i><a href="https://wordpress.org/plugins/mathematica-toolbox/">Mathematica Toolbox</a></i> is a set of shortcodes for <i>WordPress</i> relevant for <i>Mathematica</i> users. They can be used for such things as:</p>
+				<ul>
+					<li>Including CDFs in <i>WordPress</i> posts or pages.</li>
+					<li>Posting properly formatted and highlighted snippets of <i>Wolfram Language</i>/<i>Mathematica</i> code.</li>
+					<li>Fetching results from APIs deployed to Wolfram Cloud and displaying them.</li>
+					<li>Fetching information from <a href="http://mathematica.stackexchange.com">Mathematica.StackExchange</a> and displaying it.</li>
+				</ul>
+				<p>The box that gave the <i>Mathematica Toolbox</i> plugin its name is a meta box that appears right under a the post editor in the <i>WordPress</i> administration panel. The image below shows what it looks like. A second meta box provides additional functionality related to <i>Mathematica StackExchange</i>. By clicking on one of the buttons a placeholder shortcode corresponding to the selected function is inserted into the post. Filling out the parameters is usually very straightforward. If you don't get a shortcode to work you can find detailed explanations of the shortcodes further down on this page.<p>
+				<div class="thumbnail">
+					<img src="assets/img/toolbox-screenshot.png">
+					<div class="caption">
+					  <p style="text-align: center;"><i>Screenshot of the plugin meta boxes in the WordPress administration panel. The buttons insert shortcode templates into the post. The boxes are helpful but not necessary for the shortcodes to work and can be hidden from the screen options menu.</i></p>
+					</div>
+				<div>
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Where to get help</h2>
+				<p>If you encounter problems that you cannot solve with the information in this documentation please use the <a href="https://wordpress.org/support/plugin/mathematica-toolbox">support forum</a> for <i>Mathematica Toolbox</i>. If necessary you can also find my email in my <a href="https://github.com/cekdahl">Github profile</a>.</p>
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Content</h2>
+				<ol>
+					<li><a href="#embedding">Embedding CDFs</a></li>
+					<li><a href="#formatting">Formatting and highlighting</a></li>
+					<li><a href="#interacting">Interacting with Wolfram Cloud</a></li>
+					<li><a href="#mathematica">Mathematica.StackExchange shortcodes</a></li>
+					<li><a href="#extras">Extras</a></li>
+				</ol>
+			</div>
+		</div>
+	
+		<div class="row"><div class="col-md-12">
+			<h2 id="embedding">Embedding CDFs</h2>
+			<div class="row">
+				<div class="col-md-6">
+					<p>The first plugin to provide the ability to include CDFs in <i>WordPress</i> posts and pages was <a href="https://wordpress.org/plugins/wolfram-cdf-plugin/" target="_blank">Wolfram CDF</a>. Unfortunately it does not work anymore because it isn't being maintained and it broke as a result of updates that were part of WordPress 4.0.1. To make it easy for users to transition to <i>Mathematica Toolbox</i> it has kept the same shortcode. Uers who wish transition only have to uninstall the old plugin and install this one.</p>
+					<p>The placeholder shortcode is this:</p>
+					<p><pre>[WolframCDF source="" width="320" height="415" altimage="" altimagewidth="" altimageheight=""]</pre></p>
+					<h3>Parameters</h3>
+					<dl>
+						<dt>source</dt>
+						<dd><ul>
+							<li>Required: Yes</li>
+							<li>Input type(s): url to CDF</li>
+							<li>Description: <i>Mathematica Toolbox</i> has whitelisted the .cdf extension so that CDFs can be uploaded just like regular media files. The file manager will tell you the URL to the CDF that you have uploaded.</li>
+						</ul></dd>
+						<dt>width</dt>
+						<dd><ul>
+							<li>Required: Yes</li>
+							<li>Input type(s): Integer</li>
+							<li>Description: The CDF's width in pixels.
+						</ul></dd>
+						<dt>height</dt>
+						<dd><ul>
+							<li>Required: Yes</li>
+							<li>Input type(s): Integer</li>
+							<li>Description: The CDF's height in pixels.
+						</ul></dd>
+						<dt>altimage</dt>
+						<dd><ul>
+							<li>Required: No</li>
+							<li>Input type(s): image url</li>
+							<li>Description: If the CDF player is not installed this image will be shown instead. If left blank a default image will be shown instead.</li>
+						</ul></dd>
+						<dt>altimagewidth</dt>
+						<dd><ul>
+							<li>Required: No</li>
+							<li>Input type(s): Integer</li>
+							<li>Description: The alternative image's height in pixels.
+						</ul></dd>
+						<dt>altimageheight</dt>
+						<dd><ul>
+							<li>Required: No</li>
+							<li>Input type(s): Integer</li>
+							<li>Description: The alternative image's height in pixels.
+						</ul></dd>
+					</dl>
+					<h3>Possible issues</h3>
+					<ul>
+						<li>The CDF player browser plugin relies on NPAPI to communicate with browsers, just like other popular plugins such as Flash. Some of the most popular browsers are currently phasing out their support for NPAPI. At the time of writing (June, 2016) Google Chrome does not support NPAPI. Opera dropped support in their May, 2016 release and Firefox intends to drop support by the end of 2016. Browsers without NPAPI support cannot be used to view CDFs.</li>
+					</ul>
+				</div>
+				<div class="col-md-6">
+					<div class="thumbnail">
+						<img src="assets/img/wolframcdf-screenshot.png">
+						<div class="caption">
+						  <p><i>Screenshot of the WordPress plugin directory. The entry for the plugin WolframCDF now points to Mathematica Toolbox.</i></p>
+						</div>
+					</div>
+					<div class="thumbnail">
+						<img src="assets/img/cdf-screenshot.png">
+						<div class="caption">
+						  <p><i>Screenshot of what it looks like when a visitor does not have the CDF player installed. </i></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div></div>
+		
+		<div class="row"><div class="col-md-12">
+			<h2 id="interacting">Interacting with Wolfram Cloud</h2>
+			<div class="row">
+				<div class="col-md-6">
+					<p>As of <i>Mathematica 10</i> it is possible to deploy so called <i>instant APIs</i> to the <i>Wolfram Cloud</i> using <code>CloudDeploy</code> and <code>APIFunction</code>. <i>Mathematica Toolbox</i> can fetch information from deployed APIs and display it in blog posts. The shortcode for doing so is</p>
+					<pre>[WolframCloudAPI id="..."]</pre>
+					<h3>Parameters</h3>
+					<p>Retrieves and displays a list of questions corresponding to the specified post IDs. Each item is a link that points to the question with the question's title as the link text.</p>
+					<dl>
+						<dt>id</dt>
+						<dd><ul>
+							<li>Required: Yes</li>
+							<li>Input(s): Integer</li>
+							<li>ID returned by <code>CloudDeploy</code>.</li>
+						</ul></dd>
+						<dt>image</dt>
+						<dd><ul>
+							<li>Required: No</li>
+							<li>Input(s): "false"</code>.</li>
+							<li>Description: One common application of deployed APIs is to return an image, a plot for example. Especially the type of APIs one would like to display in a blog post. For that reason the result is automatically placed in an image tag. If the result is not an image setting <code>image="false"</code> will instead display the result as a string.</li>
+						</ul></dd>
+					</dl>
+					<p>Any other parameter will automatically be passed on to the <i>Wolfram Cloud</i> API.
+						
+					<h3>Working examples</h3>
+					<p>Begin by deploying an API, make sure that it is public:</p>
+					<pre>CloudDeploy[APIFunction[{
+   "rule" -> Restricted["Number", {0, 255, 1}] -> 30, 
+   "step" -> Restricted["Number", {0, Infinity, 1}] -> 50
+   }, 
+  ArrayPlot[CellularAutomaton[#rule, {{1}, 0}, #step], 
+    Frame -> False] &,
+  "PNG"
+  ], Permissions -> "Public"]</pre>
+  					<p>Let A be the ID <i>Mathematica</i> returns upon deploying the API. This is the shortcode that will display the cellular automata image:</p>
+  					<pre>[WolframCloudAPI id="A" rule="28" step="30"]</pre>
+  					<p>The following API returns a string that we would like to display:</p>
+  					<pre>CloudDeploy[APIFunction[{"x" -> "Integer"}, FactorInteger[#x] &], Permissions -> "Public"]</pre>
+  					<p>If B is the API ID that <i>Mathematica</i> returns then the shortcode we need to use is:</p>
+  					<pre>[WolframCloudAPI id="B" x="43498" image="false"]</pre> 
+				</div>
+				<div class="col-md-6">
+					<div class="thumbnail">
+						<img src="assets/img/wolfram-cloud-screenshot.png">
+						<div class="caption">
+						  <p style="text-align: center;"><i>Screenshot of a blog post that displays results retrieved from Wolfram Cloud.</i></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div></div>
+		
+		<div class="row"><div class="col-md-12">
+			<h2 id="formatting">Formatting and highlighting</h2>
+			<div class="row">
+				<div class="col-md-6">
+					<p><i>Mathematica Toolbox</i> uses the same <a href="https://github.com/halirutan/Mathematica-Source-Highlighting">highlighting script</a> as the two largest <i>Mathematica</i> community websites on the Internet, <a href="http://mathematica.stackexchange.com">Mathematica.StackExchange.com</a> and <a href="http://community.wolfram.com">Wolfram Community</a>. In this way you get the best highlighting available without having to touch any code to install it. For blocks of code you can use either the shortcode</p>
+					<pre>[wlcode]Code goes here[/wlcode]</pre>
+					<p>or the shortcode</p>
+					<pre>[wlcode field="fieldName"]</pre>
+					<p>where field name is the name of a meta field that contains the code. See below for a more detailed explanation.</p>
+					<p><code>[wlinline]code goes here[/wlinline]</code> wraps the contained text in HTML code tags, which means that it will get a special markup in many themes. It will not be highlighted however.</p>
+					<p>When <i>Mathematica</i> code is copied from a notebook to a text editor special symbols like greek letters are automatically translated into a language specific format, for example <code>\[Alpha]</code>, <code>\[Beta]</code> and <code>\[Epsilon]</code>. This more verbose format makes the code much more difficult to read. For that reason <i>Mathematica Toolbox</i> replaces all such codes with their appropriate glyphs.</p>
+					<p><i>Mathematica Toolbox</i> also prevents <i>WordPress</i> from modifying the code (e.g. by inserting <code>p</code> and <code>br</code> tags) as it would have done had the code been pasted into the post editor outside of the code highlighting shortcodes.</p>
+					<h3>The [wlcode field=""] shortcode</h3>
+					<p>Custom fields are key-value pairs that can be attached to any <i>WordPress</i> post. You should find a box underneath the text editor that says "Custom Fields", if not you have to enable it in the <i>screen options</i> pane. If you are writing a blog post you should be able to see a button that says <i>Screen options</i> in the top right corner next to a button that says <i>Help</i>.</p>
+					<p>Once custom fields are enabled and you've found the box you can start adding pieces of code into named custom fields. The name of the custom field is the parameter <code>field</code> in the shortcode <code>[wlcode field=""]</code> that will insert the particular piece of code into the blog post wherever it is placed.</p>
+				</div>
+				<div class="col-md-6">
+					<div class="thumbnail">
+						<img src="assets/img/highlighted-code-screenshot.png">
+						<div class="caption">
+						  <p><i>Screenshot of a highlighted piece of code in a blog post.</i></p>
+						</div>
+					</div>
+					<div class="thumbnail">
+						<img src="assets/img/custom-fields-screenshot.png">
+						<div class="caption">
+						  <p><i>Screenshot of code entered into custom fields. <code>[wlcode field="example"]</code> and <code>[wlcode field="glyphs"]</code> inserts the respective pieces of code into the blog post.</i></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div></div>
+
+		<div class="row"><div class="col-md-12">
+			<h2 id="mathematica">Mathematica.StackExchange shortcodes</h2>
+			<div class="row">
+				<div class="col-md-6">
+					<p><a href="http://mathematica.stackexchange.com">Mathematica StackExchange</a> (sometimes written MMA.SE) is a big Q&A site for <i>Mathematica</i>. At the time of writing (June, 2016) there are 34 0000 questions, 52 000 answers, 26 000 registered users and 7 500 visits per day. <i>Mathematica Toolbox</i> provides a set of shortcodes that interact with the <i>Mathematica StackExchange</i> API to retrieve information about users, questions and answers. This can be useful when you are writing about something related, perhaps a "top ten questions about plotting" post. You can then use a shortcode to automatically show a list of questions given their IDs. It can also be useful if you want to post a list that will change over time, such as a list of your own most popular questions or answers. By using a shortcode the list will update automatically without you having to update it manually. The fetching of information is clever in the sense that all information is cached so it's usually not making any requests to the <i>Mathematica StackExchange</i> API.</p>
+					<h3>Parameters</h3>
+					<h4>[mma_se_questions ids="..."]</h4>
+					<p>Retrieves and displays a list of questions corresponding to the specified post IDs. Each item is a link that points to the question with the question's title as the link text.</p>
+					<dl>
+						<dt>ids</dt>
+						<dd><ul>
+							<li>Required: Yes</li>
+							<li>Input(s): List of IDs separated by semicolons. For example <code>ids="11350;3345;3646"</code>.</li>
+							<li>The list of IDs is used to display a list of questions. The order is preserved from the order in that the IDs appear in this parameter.</li>
+						</ul></dd>
+						<dt>expiration</dt>
+						<dd><ul>
+							<li>Required: No</li>
+							<li>Input(s): Integer</code>.</li>
+							<li>Description: The number of seconds until the cache expires. Defaults to one month.</li>
+						</ul></dd>
+					</dl>
+					<h4>[mma_se_answers ids="..."]</h4>
+					<p>Retrieves and displays a list of answers corresponding to the specified post IDs. Each item is a link that points to the answer with the question's title as the link text.</p>
+					<dl>
+						<dt>ids</dt>
+						<dd><ul>
+							<li>Required: Yes</li>
+							<li>Input(s): List of IDs separated by semicolons. For example <code>ids="25616;259"</code>.</li>
+							<li>The list of IDs is used to display a list of answers. The order is preserved from the order in that the IDs appear in this parameter.</li>
+						</ul></dd>
+						<dt>expiration</dt>
+						<dd><ul>
+							<li>Required: No</li>
+							<li>Input(s): Integer</code>.</li>
+							<li>Description: The number of seconds until the cache expires. Defaults to one month.</li>
+						</ul></dd>
+					</dl>
+					<h4>[mma_se_user user_id="..."]</h4>
+					<p>Displays the username of the user with a particular ID. This is useful because users can change their names over time, by always using this shortcode when referring to a Mathematica.StackExchange user the name will always be up to date.</p>
+					<dl>
+						<dt>user_id</dt>
+						<dd><ul>
+							<li>Required: Yes</li>
+							<li>Input(s): Integer</li>
+							<li>The ID of the user.</li>
+						</ul></dd>
+						<dt>link</dt>
+						<dd><ul>
+							<li>Required: No</li>
+							<li>Input(s): The string "false"</code>.</li>
+							<li>Description: By default the name is rendered as a link to the user's profile page. To just show the name without the link, set this parameter to "false", i.e. <code>link="false"</code> .</li>
+						</ul></dd>
+						<dt>expiration</dt>
+						<dd><ul>
+							<li>Required: No</li>
+							<li>Input(s): Integer</code>.</li>
+							<li>Description: The number of seconds until the cache expires. Defaults to one week.</li>
+						</ul></dd>
+					</dl>
+					<h4>[mma_se_profile_box user_id="..."] </h4>
+					<p>Displays a box with information about the user; his username, gravatar, reputation score and how many badges of each type he has. You can display this information about yourself somewhere on the site, to show your standing on the Mathematica.StackExchange site.</p>
+					<dl>
+						<dt>user_id</dt>
+						<dd><ul>
+							<li>Required: Yes</li>
+							<li>Input(s): Integer</li>
+							<li>The ID of the user.</li>
+						</ul></dd>
+						<dt>expiration</dt>
+						<dd><ul>
+							<li>Required: No</li>
+							<li>Input(s): Integer</code>.</li>
+							<li>Description: The number of seconds until the cache expires. Defaults to one day.</li>
+						</ul></dd>
+					</dl>
+					<h4>[mma_se_user_questions user_id="..."]</h4>
+					<p>Displays a list of questions written by the user with the specified ID.</p>
+					<dl>
+						<dt>user_id</dt>
+						<dd><ul>
+							<li>Required: Yes</li>
+							<li>Input(s): Integer</li>
+							<li>The ID of the user.</li>
+						</ul></dd>
+						<dt>expiration</dt>
+						<dd><ul>
+							<li>Required: No</li>
+							<li>Input(s): Integer</code>.</li>
+							<li>Description: The number of seconds until the cache expires. Defaults to one day.</li>
+						</ul></dd>
+					</dl>
+					<p>This shortcode is a direct interface between WordPress and the Stack Exchange API: any parameter in the API can be added to the shortcode. For example <code>[mma_se_user_questions user_id="731" pagesize="5" sort="votes"]</code> returns the five questions asked by user 731 that have the most votes. The full set of parameters is in the <a href="http://api.stackexchange.com/docs/answers-by-ids">documentation</a> for the Stack Exchange API.</p>
+					<h4>[mma_se_user_answers user_id="..."]</h4>
+					<p>Displays a list of answers written by the user with the specified ID.</p>
+					<dl>
+						<dt>user_id</dt>
+						<dd><ul>
+							<li>Required: Yes</li>
+							<li>Input(s): Integer</li>
+							<li>The ID of the user.</li>
+						</ul></dd>
+						<dt>expiration</dt>
+						<dd><ul>
+							<li>Required: No</li>
+							<li>Input(s): Integer</code>.</li>
+							<li>Description: The number of seconds until the cache expires. Defaults to one day.</li>
+						</ul></dd>
+					</dl>
+					<p>This shortcode is a direct interface between WordPress and the Stack Exchange API: any parameter in the API can be added to the shortcode. For example <code>[mma_se_user_answers user_id="731" pagesize="5" sort="votes"]</code> returns the five questions asked by user 731 that have the most votes. The full set of parameters is in the <a href="http://api.stackexchange.com/docs/answers-by-ids">documentation</a> for the Stack Exchange API.</p>
+				</div>
+				<div class="col-md-6">
+					<div class="thumbnail">
+						<img src="assets/img/profile-box-screenshot.png">
+						<div class="caption">
+						  <p style="text-align:center;"><i>Screenshot of a profile box as displayed by <code>[mma_se_profile_box user_id="731"]</code>.</i></p>
+						</div>
+					</div>
+					<div class="thumbnail">
+						<img src="assets/img/mma-se-screenshot.png">
+						<div class="caption">
+						  <p><i>Screenshot from a blog using a variety of different shortcodes to display up to date listings of a user's top questions and answers, and the user's name.</i></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div></div>
+
+		<div class="row"><div class="col-md-12">
+			<h2 id="extras">Extras</h2>
+			<div class="row">
+				<div class="col-md-6">
+					<p>The shortcode</p>
+					<pre>[wldoc]function[/wldoc]</pre>
+					<p>displays a link to the documentation of the function that it is given.</p>
+				</div>
+				<div class="col-md-6">
+				</div>
+			</div>
+		</div></div>
+
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
