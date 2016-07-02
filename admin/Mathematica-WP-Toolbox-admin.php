@@ -118,7 +118,7 @@ class Mathematica_WP_Toolbox_Admin {
 		
 		$post_id = $args[3];
 		$field_name = $args[4];
-		$field_value = $args[5];
+		$field_value = base64_decode($args[5]);
 		
 		if( ! $field_value = update_post_meta( $post_id, $field_name, $field_value ) ) {
 			return new IXR_Error( 403, __( 'Custom field value could not be set.' ) );
