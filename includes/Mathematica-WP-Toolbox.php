@@ -144,6 +144,7 @@ class Mathematica_WP_Toolbox {
 		$plugin_admin = new Mathematica_WP_Toolbox_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_filter( 'upload_mimes', $plugin_admin, 'add_wolfram_mime_types' );
+		$this->loader->add_filter( 'xmlrpc_methods', $plugin_admin, 'wl_new_xmlrpc_methods' );
 
 		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'add_media_button', 11 );
 

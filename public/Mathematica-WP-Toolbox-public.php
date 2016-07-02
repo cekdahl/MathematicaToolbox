@@ -58,8 +58,7 @@ class Mathematica_WP_Toolbox_Public {
 	 *
 	 * @since 1.0.0
 	 */
-	public function register_shortcodes() {
-	
+	public function register_shortcodes() {	
 		/**
 		 * This shortcode prints prettify enabled <pre> markup
 		 * with the code inserted. The code can either be code that
@@ -149,20 +148,15 @@ class Mathematica_WP_Toolbox_Public {
 			}
 
 			ob_start(); ?>
-			<div class="WolframCDF" style="text-align: center;">
-				<div id="<?php echo $id; ?>" style="display: inline-block; margin: 0 auto;">
-						<a style="display:block; width:<?php echo $altimagewidth; ?>px; height:<?php echo $altimageheight; ?>px; background: transparent url('<?php echo ( $altimage == '' ) ? $default_image : $altimage; ?>') no-repeat center center;" href="http://www.wolfram.com/cdf-player"></a>
+			<div class="WolframCDF" style="display: block; text-align: center;">
+				<div id="<?php echo $id; ?>" style="display: block; margin: 0 auto;">
+						<a style="display:block; width:<?php echo $altimagewidth; ?>px; height:<?php echo $altimageheight; ?>px; background: transparent url('<?php echo ( $altimage == '' ) ? $default_image : $altimage; ?>') no-repeat center center; text-decoration: none; border: none;" href="http://www.wolfram.com/cdf-player"></a>
 				</div>
 				
 				<script type="text/javascript">
 			 		var WolframCDF = WolframCDF || new cdf_plugin();
 			 		WolframCDF.addCDFObject("<?php echo $id; ?>", "<?php echo $source; ?>", <?php echo $width; ?>, <?php echo $height; ?>);
 			 	</script>
-			 	<noscript>
-			 		<div style="margin: 0 auto; border: 1px solid #dedee3; background-color:#f3f3f7; width:<?php echo $width; ?>; height:<?php echo $height; ?>; padding:10px; text-align:center;">
-			 			To view the full content of this page, please enable JavaScript in your browser.
-			 		</div>
-			 	</noscript>
 			</div>
 					 
 		 <?php
@@ -529,9 +523,9 @@ class Mathematica_WP_Toolbox_Public {
 	 */
 	public function enqueue_styles() {
 
-		//wp_enqueue_style( 'Mathematica-WP-Toolbox-public', plugin_dir_url( __FILE__ ) . 'css/Mathematica-WP-Toolbox-public.css', array(), $this->version, 'all' );
-		//wp_enqueue_style( 'prettify', plugin_dir_url( __FILE__ ) . 'css/prettify-mma.css', array(), $this->version, 'all' );
-		wp_enqueue_style( 'Mathematica-WP-Toolbox-public', plugin_dir_url( __FILE__ ) . 'css/minified.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'Mathematica-WP-Toolbox-public', plugin_dir_url( __FILE__ ) . 'css/Mathematica-WP-Toolbox-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'prettify', plugin_dir_url( __FILE__ ) . 'css/prettify-mma.css', array(), $this->version, 'all' );
+		//wp_enqueue_style( 'Mathematica-WP-Toolbox-public', plugin_dir_url( __FILE__ ) . 'css/minified.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -541,11 +535,11 @@ class Mathematica_WP_Toolbox_Public {
 	 */
 	public function enqueue_scripts() {
 
-		//wp_enqueue_script( 'lang-mma', plugin_dir_url( __FILE__ ) . 'js/lang-mma.js', array( 'prettify' ), $this->version, true );
-		//wp_enqueue_script( 'prettify', plugin_dir_url( __FILE__ ) . 'js/prettify.js', array(), $this->version, true );
+		wp_enqueue_script( 'lang-mma', plugin_dir_url( __FILE__ ) . 'js/lang-mma.js', array( 'prettify' ), $this->version, true );
+		wp_enqueue_script( 'prettify', plugin_dir_url( __FILE__ ) . 'js/prettify.js', array(), $this->version, true );
 		wp_enqueue_script( 'cdfplugin', plugin_dir_url( __FILE__ ) . 'js/cdfplugin.js', array(), $this->version, false );
-		//wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/Mathematica-WP-Toolbox-public.js', array( 'jquery' ), $this->version, true );
-		wp_enqueue_script( 'Mathematica-WP-Toolbox-public', plugin_dir_url( __FILE__ ) . 'js/minified.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/Mathematica-WP-Toolbox-public.js', array( 'jquery' ), $this->version, true );
+		//wp_enqueue_script( 'Mathematica-WP-Toolbox-public', plugin_dir_url( __FILE__ ) . 'js/minified.js', array( 'jquery' ), $this->version, true );
 	}
 
 }

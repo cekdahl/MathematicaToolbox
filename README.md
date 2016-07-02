@@ -1,2 +1,9 @@
-# Mathematica Toolbox
-This plugin provides a lot of different functionality for WordPress users who also use Mathematica. This is a copy of the code in the repository in the official WordPress plugin directory. Read about all the functionality in the plugin directory: [https://wordpress.org/plugins/mathematica-toolbox/](https://wordpress.org/plugins/mathematica-toolbox/) 
+A WordPress plugin for Mathematica users. Check it out in the [plugin directory](https://wordpress.org/plugins/mathematica-toolbox/).
+
+Created by [Calle Ekdahl](https://github.com/cekdahl).
+
+GPL-2.0+ licensed.
+
+Current version: 1.0.4
+
+Documentation is available at [cekdahl.github.io/MathematicaToolbox](http://cekdahl.github.io/MathematicaToolbox).
